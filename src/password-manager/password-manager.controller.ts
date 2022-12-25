@@ -47,8 +47,8 @@ export class PasswordManagerController {
     return this.passwordManagerService.deletePassword(id, user);
   }
   //update task by id
-  @Patch('/:id/password')
-  upadtePassword(
+  @Patch('/:id')
+  updatePassword(
     @Param('id') id: string,
     @Body('password') password: string,
     @GetUser() user: User,
