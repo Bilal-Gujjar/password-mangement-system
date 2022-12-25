@@ -1,6 +1,25 @@
-FROM node:18-alpine As development
+FROM node:18-alpine
+
+# Create app directory
 WORKDIR /usr/src/app
-COPY --chown=node:node package*.json ./
-RUN npm ci
-COPY --chown=node:node . .
-USER node
+
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Build the app
+RUN npm run build
+
+# Set the app port
+ENV PORT 3000
+
+
+
+# Expose the app port
+EXPOSE 3000
+
+# Start the app
+CMD [ "npm", "start" ]
