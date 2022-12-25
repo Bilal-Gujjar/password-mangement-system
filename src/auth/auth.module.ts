@@ -13,7 +13,7 @@ import { JwtStrategy } from './jwt-stragey';
     JwtModule.register({
       secret: 'topSecret51',
       signOptions: {
-        expiresIn: 600,
+        expiresIn: 3600,
       },
     }),
 
